@@ -1,6 +1,10 @@
 <launch>
     <param name="use_sim_time" value="false" />
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 24c9c704a11bb77db51ad3075da1757ce80d1fec
     <!-- Main node -->
     <node name="orb_slam3" pkg="orb_slam3_ros" type="ros_mono_inertial" output="screen">
         <!-- change the topics according to the dataset -->

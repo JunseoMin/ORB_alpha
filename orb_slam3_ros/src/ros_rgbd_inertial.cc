@@ -61,8 +61,13 @@ int main(int argc, char **argv)
     bool enable_pangolin;
     node_handler.param<bool>(node_name + "/enable_pangolin", enable_pangolin, true);
 
+<<<<<<< HEAD
     node_handler.param<std::string>(node_name + "/world_frame_id", world_frame_id, "world");
     node_handler.param<std::string>(node_name + "/cam_frame_id", cam_frame_id, "depth_camera");
+=======
+    node_handler.param<std::string>(node_name + "/world_frame_id", world_frame_id, "map");
+    node_handler.param<std::string>(node_name + "/cam_frame_id", cam_frame_id, "camera");
+>>>>>>> 24c9c704a11bb77db51ad3075da1757ce80d1fec
     node_handler.param<std::string>(node_name + "/imu_frame_id", imu_frame_id, "imu");
 
     // Create SLAM system. It initializes all system threads and gets ready to process frames.
@@ -74,8 +79,13 @@ int main(int argc, char **argv)
 
     ros::Subscriber sub_imu = node_handler.subscribe("/my_robot/imu", 1000, &ImuGrabber::GrabImu, &imugb);
 
+<<<<<<< HEAD
     message_filters::Subscriber<sensor_msgs::Image> sub_rgb_img(node_handler, "/my_robot/rgb_camera", 100);
     message_filters::Subscriber<sensor_msgs::Image> sub_depth_img(node_handler, "/my_robot/depth_camera", 100);
+=======
+    message_filters::Subscriber<sensor_msgs::Image> sub_rgb_img(node_handler, "/my_robot/rgb_camera/image", 100);
+    message_filters::Subscriber<sensor_msgs::Image> sub_depth_img(node_handler, "/my_robot/depth_camera/image", 100);
+>>>>>>> 24c9c704a11bb77db51ad3075da1757ce80d1fec
 
     typedef message_filters::sync_policies::ApproximateTime<sensor_msgs::Image, sensor_msgs::Image> sync_pol;
     message_filters::Synchronizer<sync_pol> sync(sync_pol(10), sub_rgb_img, sub_depth_img);
